@@ -1,0 +1,13 @@
+package main
+
+#allowed_zones = [{"name": "us-east-2a"}, {"name": "ap-south-1a"}]
+
+allowed_zones = {"name": "us-east-2a", "n": "ap-south-1a"}
+
+#q[name] {allowed_zones[_].name = name}
+
+deny [msg] {
+    version := input.resource_changes[_].change.after.availability_zones[_]
+    version != allowed_zones[].name
+    msg := sprintf("should be using python3, currently using python %v", [allowed_zones])
+}

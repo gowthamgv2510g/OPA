@@ -1,0 +1,9 @@
+package main
+
+allowed_zones = {"us-east-2a"}
+
+deny [msg] {
+    version := input.resource_changes[_].change.after.availability_zones[_]
+    version != allowed_zones[]
+    msg := sprintf("should be using python3, currently using python %v", [version])
+}
