@@ -1,6 +1,6 @@
 package main
 
-allowed_zones = "us-east-2a"
+allowed_zones = "us-east-1a"
 
 #allowed_zones = {"name": "us-east-2a", "n": "ap-south-1a"}
 
